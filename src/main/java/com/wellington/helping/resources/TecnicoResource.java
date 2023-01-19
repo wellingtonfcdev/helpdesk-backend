@@ -31,7 +31,7 @@ public class TecnicoResource {
 		return ResponseEntity.ok().body(new TecnicoDTO(obj));
 	}
 	
-	//Lista todos
+	
 	@GetMapping
 	public ResponseEntity<List<TecnicoDTO>> findAll(){
 		List<Tecnico> list = service.findAll();
@@ -39,7 +39,7 @@ public class TecnicoResource {
 		return ResponseEntity.ok().body(listDTO);
 	}
 	
-	//Criar tecnico
+	
 	@PostMapping
 	public ResponseEntity<TecnicoDTO> create(@RequestBody TecnicoDTO objDTO){
 		Tecnico newObj = service.create(objDTO);
