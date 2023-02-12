@@ -1,5 +1,6 @@
 package com.wellington.helping.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,8 @@ public class ChamadoService {
 		Optional<Chamado> obj = repository.findById(id);
 		return obj.orElseThrow(()-> new ObjectnotFoundException("Objeto não encontrado! ID: " + id));
 	}
+
+	public List<Chamado> findAll() {
+		return repository.findAll();
+		}
 }
