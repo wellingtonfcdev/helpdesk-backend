@@ -17,6 +17,7 @@ public class DevConfig {
 	
 	@Value("${spring.jpa.hibernate.ddl-auto}")
 	private String value;
+	
 	@Bean
 	public boolean instanciaDb() {
 		if(value.equals("create")) {

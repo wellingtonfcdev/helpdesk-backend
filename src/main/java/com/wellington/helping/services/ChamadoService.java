@@ -21,7 +21,7 @@ import com.wellington.helping.services.exceptions.ObjectnotFoundException;
 public class ChamadoService {
 
 	@Autowired
-	private ChamadoRepository repository;
+	private ChamadoRepository repository;//faz a comunicação com o banco
 	
 	@Autowired
 	private TecnicoService tecnicoService;
@@ -29,6 +29,7 @@ public class ChamadoService {
 	@Autowired
 	private ClienteService clienteService;
 	
+	//retorna um chamado
 	public Chamado findById(Integer id) {
 		Optional<Chamado> obj = repository.findById(id);
 		return obj.orElseThrow(()-> new ObjectnotFoundException("Objeto não encontrado! ID: " + id));
@@ -40,6 +41,13 @@ public class ChamadoService {
 
 	public Chamado create(@Valid ChamadoDTO objDTO) {
 		return repository.save(newChamado(objDTO));
+	}
+	
+	public Chamado update(Integer id, @Valid ChamadoDTO objDTO) {
+		objDTO.setId(id);
+		Chamado oldObj = findById(id);
+		oldObj = newChamado(objDTO);
+		return repository.save(oldObj);
 	}
 	
 	private Chamado newChamado(ChamadoDTO obj) {
@@ -59,4 +67,6 @@ public class ChamadoService {
 		chamado.setObservacoes(obj.getObservacoes());
 		return chamado;
 	}
+
+	
 }

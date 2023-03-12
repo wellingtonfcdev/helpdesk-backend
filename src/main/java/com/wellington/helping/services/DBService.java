@@ -45,14 +45,14 @@ public class DBService {
 		Cliente cli7 = new Cliente(null, "Sarah Fátima Daniela Ribeiro", "46918855875", "sarah.fatima.ribeiro@marmorariauchoa.com", "123");
 		Cliente cli8 = new Cliente(null, "Joaquim Lorenzo Mário Vieira", "54224753642", "joaquim-vieira89@carubelli.com.br", "123");
 		
-		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec1, cli1);
-		Chamado c2 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec2, cli2);
-		Chamado c3 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec3, cli3);
-		Chamado c4 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec4, cli4);
-		Chamado c5 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec5, cli5);
-		Chamado c6 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec6, cli6);
-		Chamado c7 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec7, cli7);
-		Chamado c8 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado", tec8, cli8);
+		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado 1", tec1, cli1);
+		Chamado c2 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 02", "Primeiro Chamado 2", tec2, cli2);
+		Chamado c3 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 03", "Primeiro Chamado 3", tec3, cli3);
+		Chamado c4 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 04", "Primeiro Chamado 4", tec4, cli4);
+		Chamado c5 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 05", "Primeiro Chamado 5", tec5, cli5);
+		Chamado c6 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 06", "Primeiro Chamado 6", tec6, cli6);
+		Chamado c7 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 07", "Primeiro Chamado 7", tec7, cli7);
+		Chamado c8 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 08", "Primeiro Chamado 8", tec8, cli8);
 		
 		tecnicoRepository.saveAll(Arrays.asList(tec1,tec2,tec3,tec4,tec5,tec6,tec7,tec8));
 		clienteRepository.saveAll(Arrays.asList(cli1,cli2,cli3,cli4,cli5,cli6,cli7,cli8));
