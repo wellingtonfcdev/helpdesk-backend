@@ -1,6 +1,5 @@
 package com.wellington.helping.services;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,9 +57,6 @@ public class ChamadoService {
 		Chamado chamado = new Chamado();
 		if(obj.getId() != null) {
 			chamado.setId(obj.getId());
-		}
-		if(obj.getStatus().equals(2)) {
-			chamado.setDataFechamento(LocalDate.now());//pega a data atual do encerramento do chamado
 		}
 		
 		chamado.setTecnico(tecnico);
