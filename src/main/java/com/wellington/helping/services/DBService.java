@@ -3,6 +3,7 @@ package com.wellington.helping.services;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.wellington.helping.domain.Chamado;
@@ -24,26 +25,28 @@ public class DBService {
 	private ClienteRepository clienteRepository;
 	@Autowired
 	private ChamadoRepository chamadoRepository;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
 	public void instanciaDB() {
-		Tecnico tec1 = new Tecnico(null, "Hugo Nelson Arthur Fogaça", "10340604905", "hugo_fogaca@andressamelo.com.br", "123");
+		Tecnico tec1 = new Tecnico(null, "Hugo Nelson Arthur Fogaça", "10340604905", "hugo_fogaca@andressamelo.com.br", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);
-		Tecnico tec2 = new Tecnico(null, "Rafael Davi Fogaça", "45978762600", "rafael_davi_fogaca@maggitoyota.com.br", "123");
-		Tecnico tec3 = new Tecnico(null, "Agatha Milena Eliane Almada", "89444361004", "agatha_almada@p4ed.com", "123");
-		Tecnico tec4 = new Tecnico(null, "Juan Sebastião Geraldo Vieira", "47428723043", "juan_vieira@mirafactoring.com.br", "123");
-		Tecnico tec5 = new Tecnico(null, "Pedro Henrique Vitor Daniel Lopes", "53367222275", "pedro_henrique_lopes@alwan.com.br", "123");
-		Tecnico tec6 = new Tecnico(null, "Nathan João Victor Ribeiro", "98148155194", "nathan_ribeiro@comprehense.com.br", "123");
-		Tecnico tec7 = new Tecnico(null, "Stefany Lara Daiane Figueiredo", "15158905037", "stefany.lara.figueiredo@vpsa.com.br", "123");
-		Tecnico tec8 = new Tecnico(null, "Ester Melissa Rocha", "76877135750", "ester_rocha@construtoraplaneta.com.br", "123");
+		Tecnico tec2 = new Tecnico(null, "Rafael Davi Fogaça", "45978762600", "rafael_davi_fogaca@maggitoyota.com.br", encoder.encode("123"));
+		Tecnico tec3 = new Tecnico(null, "Agatha Milena Eliane Almada", "89444361004", "agatha_almada@p4ed.com", encoder.encode("123"));
+		Tecnico tec4 = new Tecnico(null, "Juan Sebastião Geraldo Vieira", "47428723043", "juan_vieira@mirafactoring.com.br", encoder.encode("123"));
+		Tecnico tec5 = new Tecnico(null, "Pedro Henrique Vitor Daniel Lopes", "53367222275", "pedro_henrique_lopes@alwan.com.br", encoder.encode("123"));
+		Tecnico tec6 = new Tecnico(null, "Nathan João Victor Ribeiro", "98148155194", "nathan_ribeiro@comprehense.com.br", encoder.encode("123"));
+		Tecnico tec7 = new Tecnico(null, "Stefany Lara Daiane Figueiredo", "15158905037", "stefany.lara.figueiredo@vpsa.com.br", encoder.encode("123"));
+		Tecnico tec8 = new Tecnico(null, "Ester Melissa Rocha", "76877135750", "ester_rocha@construtoraplaneta.com.br", encoder.encode("123"));
 		
-		Cliente cli1 = new Cliente(null, "Sara Alana Mariana da Mata", "73842598009", "sara_damata@catsfeelings.com.br", "123");
-		Cliente cli2 = new Cliente(null, "Pedro Henrique Leandro Paulo Oliveira", "33001305738", "pedro.henrique.oliveira@grupointegraambiental.com.br", "123");
-		Cliente cli3 = new Cliente(null, "Emanuel Fábio Juan da Costa", "67928665808", "emanuel.fabio.dacosta@mucoucah.com.br", "123");
-		Cliente cli4 = new Cliente(null, "Lorenzo Rodrigo Costa", "68188000507", "lorenzo.rodrigo.costa@franciscofilho.adv.br", "123");
-		Cliente cli5 = new Cliente(null, "Miguel Fábio Lorenzo da Paz", "25590216761", "miguel_fabio_dapaz@abbott.com", "123");
-		Cliente cli6 = new Cliente(null, "Matheus Ricardo Henrique Monteiro", "65600558414", "matheus-monteiro95@soelegancia.com.br", "123");
-		Cliente cli7 = new Cliente(null, "Sarah Fátima Daniela Ribeiro", "46918855875", "sarah.fatima.ribeiro@marmorariauchoa.com", "123");
-		Cliente cli8 = new Cliente(null, "Joaquim Lorenzo Mário Vieira", "54224753642", "joaquim-vieira89@carubelli.com.br", "123");
+		Cliente cli1 = new Cliente(null, "Sara Alana Mariana da Mata", "73842598009", "sara_damata@catsfeelings.com.br", encoder.encode("123"));
+		Cliente cli2 = new Cliente(null, "Pedro Henrique Leandro Paulo Oliveira", "33001305738", "pedro.henrique.oliveira@grupointegraambiental.com.br",encoder.encode("123"));
+		Cliente cli3 = new Cliente(null, "Emanuel Fábio Juan da Costa", "67928665808", "emanuel.fabio.dacosta@mucoucah.com.br", encoder.encode("123"));
+		Cliente cli4 = new Cliente(null, "Lorenzo Rodrigo Costa", "68188000507", "lorenzo.rodrigo.costa@franciscofilho.adv.br", encoder.encode("123"));
+		Cliente cli5 = new Cliente(null, "Miguel Fábio Lorenzo da Paz", "25590216761", "miguel_fabio_dapaz@abbott.com", encoder.encode("123"));
+		Cliente cli6 = new Cliente(null, "Matheus Ricardo Henrique Monteiro", "65600558414", "matheus-monteiro95@soelegancia.com.br", encoder.encode("123"));
+		Cliente cli7 = new Cliente(null, "Sarah Fátima Daniela Ribeiro", "46918855875", "sarah.fatima.ribeiro@marmorariauchoa.com", encoder.encode("123"));
+		Cliente cli8 = new Cliente(null, "Joaquim Lorenzo Mário Vieira", "54224753642", "joaquim-vieira89@carubelli.com.br", encoder.encode("123"));
 		
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado 1", tec1, cli1);
 		Chamado c2 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 02", "Primeiro Chamado 2", tec2, cli2);

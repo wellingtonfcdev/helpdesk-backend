@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.7</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.6.2</version>
+		<relativePath/> <!-- lookup parent from repository 2.6.2-->
 	</parent>
 	<groupId>com.wellington</groupId>
 	<artifactId>helpdesking</artifactId>
@@ -46,6 +46,18 @@
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
     
+</dependency>
+
+<!-- Security -->
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+<dependency>
+	<groupId>io.jsonwebtoken</groupId>
+	<artifactId>jjwt</artifactId>
+	<version>0.7.0</version>
 </dependency>
 
 		<dependency>
