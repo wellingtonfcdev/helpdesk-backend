@@ -5,13 +5,20 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import com.wellington.helping.security.JWTAuthenticationFilter;
+import com.wellington.helping.security.JWTUtil;
+
+
 
 
 @EnableWebSecurity
@@ -23,6 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	private Environment env;
+	@Autowired
+	private JWTUtil jwtUtil;
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
 
 	// Liberar de forma explicita as configurações de cross-origin
 	@Override
@@ -31,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			http.headers().frameOptions().disable();
 			}
 		http.cors().and().csrf().disable();
-		
+		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
 		http.authorizeRequests()
 			.antMatchers(PUBLIC_MATCHERS).permitAll()
 			.anyRequest().authenticated();
@@ -39,10 +51,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+	}
+	
 	@Bean
 	UrlBasedCorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
-		configuration.setAllowedMethods(Arrays.asList("GET","PUT"));
+		configuration.setAllowedMethods(Arrays.asList("GET","PUT","POST"));
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		return source;
 	}
